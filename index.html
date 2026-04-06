@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }body {
+  height: 100vh;
+  background: linear-gradient(135deg, #3e2723, #1b1b1b, #4e342e);
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #d7ccc8;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #bcaaa4;
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #a1887f;
+  color: #1b1b1b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #8d6e63;
+  transform: scale(1.05);
+}
+
+.message {
+  margin-top: 30px;
+  display: none;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);} 
+  to { opacity: 1; transform: translateY(0);} 
+}
+
+/* coffee particles */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #d7ccc8;
+  opacity: 0.3;
+  animation: float 6s infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0);} 
+  to { transform: translateY(-100vh);} 
+}
+
+/* music button */
+.music-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1db954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.music-btn span {
+  color: white;
+  font-size: 20px;
+}
+
+  </style>
+</head>
+<body><div class="particles" id="particles"></div><div class="music-btn" onclick="toggleMusic()">
+  <span>▶</span>
+</div><div class="container">
+  <h1>Happy Birthday 🎂</h1>
+  <p>Ifdhaalll</p>
+  <button onclick="showMessage()">Open Message</button>  <div class="message" id="message">
+    <p>
+      Semoga di umur kamu yang sekarang, semua hal baik datang ke kamu,
+      semua doa yang kamu simpan diam-diam satu per satu jadi nyata.
+      <br><br>
+      Stay strong, stay cool, stay happy
+      and I'm really glad to know you ☕
+      <br><br>
+      Terima kasih sudah ada sejauh 🌷
+    </p>
+  </div>
+</div><audio id="music" src="aboutyou.mp3"></audio>
+
+<script>
+  function showMessage() {
+    document.getElementById('message').style.display = 'block';
+  }
+
+  // particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 60; i++) {
+    let dot = document.createElement('div');
+    dot.classList.add('dot');
+    dot.style.left = Math.random() * 100 + '%';
+    dot.style.top = Math.random() * 100 + '%';
+    dot.style.animationDuration = (3 + Math.random() * 5) + 's';
+    container.appendChild(dot);
+  }
+
+  // music control
+  const music = document.getElementById('music');
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      isPlaying = false;
+    } else {
+      music.play();
+      isPlaying = true;
+    }
+  }
+</script></body>
+</html>
